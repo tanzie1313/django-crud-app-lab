@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="card">
+    <div class="card-body">
+        <h1 class="card-title">
+            {% if object %}
+                Edit {{ object.title }}
+            {% else %}
+                Add New Film
+            {% endif %}
+        </h1>
+        <form action="" method="POST">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit" class="btn btn-primary">
+                {% if object %}
+                    Update Film
+                {% else %}
+                    Add Film
+                {% endif %}
+            </button>
+        </form>
+    </div>
+</div>
+{% endblock %} 
