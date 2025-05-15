@@ -60,30 +60,24 @@ a:hover {
   display: inline-block;
 }
 
-/* Sparkle effect for navbar */
+/* More visible sparkle effect for navbar */
 .navbar-sparkle {
-  position: relative;
-  overflow: hidden;
+  background: var(--primary-color) !important;
+  min-height: 60px;
 }
 
+/* Remove sparkle pseudo-element */
 .navbar-sparkle::before {
-  content: '';
-  pointer-events: none;
-  position: absolute;
-  top: 0; left: 0; right: 0; bottom: 0;
-  background: url('https://svgshare.com/i/13uG.svg') repeat;
-  opacity: 0.5;
-  animation: sparkle-move 3s linear infinite;
-  z-index: 1;
-}
-
-@keyframes sparkle-move {
-  0% { background-position: 0 0, 0 0; }
-  100% { background-position: 100px 100px, 100px 100px; }
+  display: none;
 }
 
 /* Ensure nav content is above the sparkles */
 .navbar .container, .navbar .navbar-collapse {
   position: relative;
   z-index: 2;
+}
+
+/* Make navbar text black */
+.navbar .navbar-brand, .navbar .nav-link {
+  color: #111 !important;
 } 
