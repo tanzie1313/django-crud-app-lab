@@ -5,13 +5,18 @@ from django.contrib.auth import login
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
-from .models import Film, Review
+from .models import Film, Review, Tag
 from django import forms
 
 class FilmForm(forms.ModelForm):
     class Meta:
         model = Film
-        fields = ['title', 'director', 'queer_themes', 'rating', 'where_to_watch']
+        fields = ['title', 'director', 'queer_themes', 'rating', 'where_to_watch', 'tags']
+    tags = forms.ModelMultipleChoiceField(
+        queryset=Tag.objects.all(),
+        widget=forms.CheckboxSelectMultiple,
+        required=False
+    )
 
 class ReviewForm(forms.ModelForm):
     class Meta:
@@ -77,3 +82,31 @@ def signup(request):
     form = UserCreationForm()
     context = {'form': form, 'error_message': error_message}
     return render(request, 'registration/signup.html', context)
+
+# Tag CRUD views
+class TagListView(ListView):
+    model = Tag
+    template_name = 'main_app/tags/index.html'
+    context_object_name = 'tags'
+
+class TagDetailView(DetailView):
+    model = Tag
+    template_name = 'main_app/tags/detail.html'
+    context_object_name = 'tag'
+
+class TagCreate(CreateView):
+    model = Tag
+    fields = ['name']
+    template_name = 'main_app/tags/tag_form.html'
+    success_url = '/tags/'
+
+class TagUpdate(UpdateView):
+    model = Tag
+    fields = ['name']
+    template_name = 'main_app/tags/tag_form.html'
+    success_url = '/tags/'
+
+class TagDelete(DeleteView):
+    model = Tag
+    template_name = 'main_app/tags/tag_confirm_delete.html'
+    success_url = '/tags/'

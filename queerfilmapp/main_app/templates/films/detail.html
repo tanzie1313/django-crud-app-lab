@@ -21,6 +21,17 @@
                 <p><strong>Where to Watch:</strong> <a href="{{ film.where_to_watch }}" target="_blank">{{ film.where_to_watch }}</a></p>
                 <p><strong>Queer Themes:</strong></p>
                 <p>{{ film.queer_themes }}</p>
+                <p><strong>Tags:</strong>
+                    {% if film.tags.all %}
+                        {% for tag in film.tags.all %}
+                            <a href="{% url 'tag_detail' tag.pk %}" class="badge bg-primary me-1">{{ tag.name }}</a>
+                        {% empty %}
+                            <span class="text-muted">No tags</span>
+                        {% endfor %}
+                    {% else %}
+                        <span class="text-muted">No tags</span>
+                    {% endif %}
+                </p>
             </div>
             
             <div class="col-md-6">

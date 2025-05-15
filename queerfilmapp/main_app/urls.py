@@ -11,4 +11,9 @@ urlpatterns = [
     path('films/<int:pk>/delete/', views.FilmDelete.as_view(), name='films_delete'),
     path('films/<int:film_id>/add_review/', views.add_review, name='add_review'),
     path('accounts/signup/', views.signup, name='signup'),
+    path('tags/', views.TagListView.as_view(), name='tags_index'),
+    path('tags/<int:pk>/', views.TagDetailView.as_view(), name='tag_detail'),
+    path('tags/create/', views.TagCreate.as_view(), name='tag_create'),
+    path('tags/<int:pk>/update/', views.TagUpdate.as_view(), name='tag_update'),
+    path('tags/<int:pk>/delete/', views.TagDelete.as_view(), name='tag_delete'),
 ] 
