@@ -1,0 +1,61 @@
+@import url('https://fonts.googleapis.com/css2?family=Pacifico&family=Quicksand:wght@400;600&display=swap');
+
+:root {
+  --primary-color: #ff3e96; /* Hot pink */
+  --accent-color: #6a0dad;  /* Lavender purple */
+  --background: #fff0f5;    /* Lavender blush */
+  --text-dark: #333;
+  --text-light: #fff;
+  --rainbow-gradient: linear-gradient(90deg, #e40303, #ff8c00, #ffed00, #008026, #004dff, #750787);
+}
+
+body {
+  background: var(--background);
+  color: var(--text-dark);
+  margin: 0;
+  padding: 0;
+  line-height: 1.6;
+  font-family: 'Quicksand', sans-serif;
+}
+
+header {
+  background: var(--rainbow-gradient);
+  color: var(--text-light);
+  padding: 1rem 2rem;
+  text-align: center;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+h1, h2 {
+  font-family: 'Pacifico', cursive;
+}
+
+button {
+  background: var(--primary-color);
+  border: none;
+  padding: 0.75rem 1.5rem;
+  border-radius: 10px;
+  color: var(--text-light);
+  font-weight: bold;
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+button:hover {
+  transform: scale(1.05);
+  background: var(--accent-color);
+}
+
+a {
+  color: var(--accent-color);
+  text-decoration: none;
+}
+a:hover {
+  text-decoration: underline;
+}
+
+/* Fun additions */
+.rainbow-underline {
+  border-bottom: 3px solid;
+  border-image: var(--rainbow-gradient) 1;
+  display: inline-block;
+} 
