@@ -22,7 +22,7 @@ def home(request):
     return render(request, 'home.html')
 
 def about(request):
-    return render(request, 'about.html')
+    return render(request, 'main_app/about.html')
 
 @login_required
 def films_index(request):
